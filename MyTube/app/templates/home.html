@@ -1,14 +1,66 @@
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'style/bulma.min.css' %}">
-</head>
-<body>
-   Hello, MyTube
-</body>
-</html>
+{% extends 'base_layout.html' %}
+{% block content %}
+    <div class="columns">
+        <div class="column is-2">
+            <aside class="menu p-2">
+                <ul class="menu-list">
+                    <li>
+                        <a>
+                            <ion-icon name="home-outline"></ion-icon>
+                            <span>Главная</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <ion-icon name="videocam-outline"></ion-icon>
+                            <span>Shorts</span>
+                        </a>
+
+                    </li>
+                    <li>
+                        <a>
+                            <ion-icon name="list-outline"></ion-icon>
+                            <span>Подписки</span>
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+                <ul class="menu-list">
+                    <li>
+                        <a>Библиотека</a>
+                    </li>
+                    <li>
+                        <a>История</a>
+                    </li>
+                </ul>
+                <hr>
+                <p class="menu-label">
+                    Навигатор
+                </p>
+                <ul class="menu-list">
+                    <li>
+                        <a>В тренде</a>
+                    </li>
+                    <li>
+                        <a>Музыка</a>
+                    </li>
+                    <li>
+                        <a>Фильмы</a>
+                    </li>
+                    <li>
+                        <a>Трансляции</a>
+                    </li>
+                    <li>
+                        <a>Видеоигры</a>
+                    </li>
+                    <li>
+                        <a>Спорт</a>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+        <div class="column">
+
+        </div>
+    </div>
+{% endblock %}
