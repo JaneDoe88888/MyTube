@@ -106,11 +106,21 @@
                         <figure class="image video-image">
                             <img src="{{ video.image.url }}" alt="">
                         </figure>
-                        <div class="content is-size-4 has-text-weight-bold">
-                            {{ video.title }}
-                        </div>
-                        <div class="content is-size-4 has-text-weight-bold">
-                            {{ video.created_add }}
+                        <div class="content is-flex mt-3 is-align-items-center">
+                            <div>
+                                <figure class="image is-48x48">
+                                    <img class="is-rounded" src="https://bulma.io/images/placeholders/48x48.png" alt="">
+                                </figure>
+                            </div>
+                            <div class="content">
+                                <div class="title is-4">{{ video.title }}</div>
+                                <div class="subtitle">Video Author</div>
+                                <div class="subtitle">
+                                    <span>22 млн просмотров</span>
+                                    <span>- {{ video.created_add }}</span>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 {% endfor %}
