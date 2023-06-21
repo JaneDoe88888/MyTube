@@ -1,7 +1,49 @@
 {% extends 'base_layout.html' %}
 
 {% block content %}
-    <video width="530" height="440" controls autoplay>
-        <source src="{{ video.file.url }}" type="video/mp4"/>
-    </video>
+    <div class="container">
+        <div class="columns">
+            <div class="column is-8">
+                <video width="830" controls poster="{{ video.image.url }}" muted>
+                    <source src="{{ video.file.url }}" type="video/mp4"/>
+                </video>
+                <div class="title mt-4">
+                    {{ video }}
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img class="is-rounded" src="https://bulma.io/images/placeholders/48x48.png" alt="">
+                            </figure>
+                        </div>
+                        <div class="is-flex is-align-items-center">
+                            <div class="media-content">
+                                <div class="title">Lorem ipsum.</div>
+                                <div class="subtitle">22 mln views</div>
+                            </div>
+                            <button class="button ml-4 is-light has-text-dark is-medium is-rounded">
+                                Подписаться
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt minus odit
+                    suscipit?
+                </div>
+                <div class="box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non officia voluptas
+                    voluptate.
+                </div>
+                <div class="box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic odit quo repellat.</div>
+                <div class="box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis provident quam
+                    veritatis!
+                </div>
+                <div class="box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad ducimus voluptates
+                    voluptatum!
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
