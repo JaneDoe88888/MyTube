@@ -12,3 +12,11 @@
 .menu a ion-icon {
     color: hsl(141, 71%, 48%);
 }
+
+.video-image {
+    width: 400px;
+}
+
+.video-image img {
+    border-radius: 10px;
+}
