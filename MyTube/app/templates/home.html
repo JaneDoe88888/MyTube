@@ -15,7 +15,6 @@
                             <ion-icon name="videocam-outline"></ion-icon>
                             <span>Shorts</span>
                         </a>
-
                     </li>
                     <li>
                         <a>
@@ -103,9 +102,11 @@
             <div class="columns is-multiline">
                 {% for video in videos %}
                     <div class="column">
-                        <figure class="image video-image">
-                            <img src="{{ video.image.url }}" alt="">
-                        </figure>
+                        <a href="{% url 'app:video' video.pk %}">
+                            <figure class="image video-image">
+                                <img src="{{ video.image.url }}" alt="">
+                            </figure>
+                        </a>
                         <div class="content is-flex mt-3 is-align-items-center">
                             <div>
                                 <figure class="image is-48x48">
