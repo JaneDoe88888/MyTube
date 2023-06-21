@@ -4,30 +4,56 @@
     <div class="container">
         <div class="columns">
             <div class="column is-8">
-                <video width="830" controls poster="{{ video.image.url }}" muted>
+                <video width="880" controls poster="{{ video.image.url }}" muted>
                     <source src="{{ video.file.url }}" type="video/mp4"/>
                 </video>
                 <div class="title mt-4">
                     {{ video }}
                 </div>
-                <div class="card-content">
-                    <div class="media">
-                        <div class="media-left">
-                            <figure class="image is-48x48">
-                                <img class="is-rounded" src="https://bulma.io/images/placeholders/48x48.png" alt="">
-                            </figure>
-                        </div>
-                        <div class="is-flex is-align-items-center">
-                            <div class="media-content">
-                                <div class="title">Lorem ipsum.</div>
-                                <div class="subtitle">22 mln views</div>
+                <div class="is-flex is-justify-content-space-between is-align-items-center">
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img class="is-rounded" src="https://bulma.io/images/placeholders/48x48.png" alt="">
+                                </figure>
                             </div>
-                            <button class="button ml-4 is-light has-text-dark is-medium is-rounded">
-                                Подписаться
-                            </button>
+                            <div class="is-flex is-align-items-center">
+                                <div class="media-content">
+                                    <div class="title">Lorem ipsum.</div>
+                                    <div class="subtitle">22 mln views</div>
+                                </div>
+                                <button class="button ml-4 is-light has-text-dark is-medium is-rounded">
+                                    Подписаться
+                                </button>
+                            </div>
                         </div>
                     </div>
+                    <div class="is-flex">
+                        <div class="field has-addons">
+                            <p class="control">
+                                <button class="button is-dark">
+                                    <ion-icon name="thumbs-up-outline"></ion-icon>
+                                    100
+                                </button>
+                            </p>
+                            <p class="control">
+                                <button class="button is-dark">
+                                    <ion-icon name="thumbs-down-outline"></ion-icon>
+                                    80
+                                </button>
+                            </p>
+                        </div>
+                        <button class="button is-dark is-rounded">
+                            <ion-icon name="share-outline"></ion-icon>
+                            Поделиться
+                        </button>
+                        <button class="button is-dark is-rounded">
+                            <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+                        </button>
+                    </div>
                 </div>
+
             </div>
             <div class="column">
                 <div class="box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt minus odit
