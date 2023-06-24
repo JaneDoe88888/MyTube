@@ -1,6 +1,4 @@
-* {
-    background: black;
-}
+
 .navbar-icon {
     color: hsl(141, 71%, 48%);
     font-size: 40px;
@@ -23,4 +21,8 @@
 
 .video-image img {
     border-radius: 10px;
+}
+
+.form * {
+    background: hsl(206, 70%, 96%);
 }

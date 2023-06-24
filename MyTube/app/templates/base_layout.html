@@ -43,12 +43,25 @@
             </div>
         </div>
         <div class="navbar-end">
-            <div class="navbar-item">
-                <button class="button is-rounded">
-                    <ion-icon name="person-circle-outline" class="navbar-icon"></ion-icon>
-                    <span class="subtitle is-5 ml-3">Войти</span>
-                </button>
-            </div>
+            {% if not user.is_authenticated %}
+                <div class="navbar-item">
+                    <a class="button is-rounded" href="{% url 'users:sign_in' %}">
+                        <ion-icon name="person-circle-outline" class="navbar-icon"></ion-icon>
+                        <span class="subtitle is-5 ml-3">Войти</span>
+                    </a>
+                </div>
+            {% else %}
+                <div class="navbar-item has-dropdown is-hoverable">
+                <div class="navbar-link">
+                    {{ user }}
+                </div>
+                <div class="navbar-dropdown">
+                    <a href="{% url 'users:sign_out' %}" class="navbar-item has-text-danger">
+                        Выйти
+                    </a>
+                </div>
+                </div>
+            {% endif %}
         </div>
     </div>
 </nav>

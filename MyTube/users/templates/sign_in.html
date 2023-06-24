@@ -1,0 +1,39 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="columns is-centered is-vcentered">
+            <div class="column is-4">
+                <div class="box has-background-info-light">
+                    <form method="post" class="has-background-info-light">
+                        <div class="title">
+                            Авторизация
+                        </div>
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="field">
+                                <label for="{{ field.id_for_label }}" class="label">
+                                    {{ field.label }}
+                                </label>
+                                <div class="control">
+                                    {{ field }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                        {% if form.errors %}
+                            <ul>
+                                {% for error in form.errors.values %}
+                                    <li class="has-text-danger">{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    <button class="button is-primary">
+                        Отправить
+                    </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
