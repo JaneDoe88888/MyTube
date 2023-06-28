@@ -32,7 +32,8 @@
                     <div class="is-flex">
                         <div class="field has-addons">
                             <p class="control">
-                                <a href="{% url 'app:likes' video.pk %}" class="button is-dark {% if user in video.likes.all %} is-success {% endif %}">
+                                <a href="{% url 'app:likes' video.pk %}"
+                                   class="button is-dark {% if user in video.likes.all %} is-success {% endif %}">
                                     <ion-icon name="thumbs-up-outline"></ion-icon>
                                     <span class="content ml-4">
                                         {{ video.likes.count }}
@@ -40,7 +41,8 @@
                                 </a>
                             </p>
                             <p class="control">
-                                <a href="{% url 'app:dislikes' video.pk %}" class="button is-dark {% if user in video.dislikes.all %} is-danger {% endif %}">
+                                <a href="{% url 'app:dislikes' video.pk %}"
+                                   class="button is-dark {% if user in video.dislikes.all %} is-danger {% endif %}">
                                     <ion-icon name="thumbs-down-outline"></ion-icon>
                                     <span class="content ml-4">
                                         {{ video.dislikes.count }}
@@ -57,17 +59,19 @@
                         </button>
                     </div>
                 </div>
-            <div class="comments">
-                <div class="is-flex is-justify-content-start is-align-items-center">
-                    <div class="title is-5">
-                        20 comments
+                <div class="columns is-vcentered">
+                    <div class="column is-2">
+                        <div class="title is-5">
+                            20 comments
+                        </div>
                     </div>
-                    <div class="content is-flex is-justify-content-start is-align-items-center">
-                        <ion-icon name="reorder-three-outline"></ion-icon>
-                        <span class="subtitle ml-3">Упорядочить</span>
+                    <div class="column is-3">
+                        <div class="content is-flex is-justify-content-start is-align-items-center">
+                            <ion-icon name="reorder-three-outline"></ion-icon>
+                            <span class="subtitle ml-3">Упорядочить</span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
             </div>
             <div class="column">
