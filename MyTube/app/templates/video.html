@@ -20,7 +20,7 @@
                             </div>
                             <div class="is-flex is-align-items-center">
                                 <div class="media-content">
-                                    <div class="title">Lorem ipsum.</div>
+                                    <div class="title">{{ video.author }}</div>
                                     <div class="subtitle">22 mln views</div>
                                 </div>
                                 <button class="button ml-4 is-light has-text-dark is-medium is-rounded">
@@ -32,16 +32,20 @@
                     <div class="is-flex">
                         <div class="field has-addons">
                             <p class="control">
-                                <button class="button is-dark">
+                                <a href="{% url 'app:likes' video.pk %}" class="button is-dark {% if user in video.likes.all %} is-success {% endif %}">
                                     <ion-icon name="thumbs-up-outline"></ion-icon>
-                                    100
-                                </button>
+                                    <span class="content ml-4">
+                                        {{ video.likes.count }}
+                                    </span>
+                                </a>
                             </p>
                             <p class="control">
-                                <button class="button is-dark">
+                                <a href="{% url 'app:dislikes' video.pk %}" class="button is-dark {% if user in video.dislikes.all %} is-danger {% endif %}">
                                     <ion-icon name="thumbs-down-outline"></ion-icon>
-                                    80
-                                </button>
+                                    <span class="content ml-4">
+                                        {{ video.dislikes.count }}
+                                    </span>
+                                </a>
                             </p>
                         </div>
                         <button class="button is-dark is-rounded">
