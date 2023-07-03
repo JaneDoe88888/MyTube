@@ -82,23 +82,27 @@
                         <div class="comment">
                             <div class="columns is-vcentered">
                                 <div class="column is-1">
-                                    @admin
+                                    @{{ comment.user }}
                                 </div>
                                 <div class="column is-2">
-                                    8 месяцев назад
+                                    {{ comment.date }}
                                 </div>
                             </div>
                             <div class="content">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, vero.
+                                {{ comment.text }}
                             </div>
                             <div class="field has-addons">
                                 <p class="control mx-2">
-                                    <ion-icon name="thumbs-up-outline"></ion-icon>
-                                    <span class="ml-2">100</span>
+                                    <a href="{% url 'app:comment_likes' comment.pk %}" class="has-text-black {% if user in comment.likes.all %} has-text-success {% endif %}">
+                                        <ion-icon name="thumbs-up-outline"></ion-icon>
+                                    </a>
+                                    <span class="ml-2">{{ comment.likes.count }}</span>
                                 </p>
                                 <p class="control mx-2">
-                                    <ion-icon name="thumbs-down-outline"></ion-icon>
-                                    <span class="ml-2">100</span>
+                                    <a href="{% url 'app:comment_dislikes' comment.pk %}" class="has-text-black {% if user in comment.dislikes.all %} has-text-danger {% endif %}">
+                                        <ion-icon name="thumbs-down-outline"></ion-icon>
+                                    </a>
+                                    <span class="ml-2">{{ comment.dislikes.count }}</span>
                                 </p>
                                 <p class="control">
                                     <span class="ml-2">Ответить</span>

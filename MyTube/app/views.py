@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from . models import Video
+from . models import Video, Comment
 from . forms import CommentForm
 
 
@@ -12,6 +12,8 @@ def video(request, pk):
     video_object = Video.objects.get(pk=pk)
     form = CommentForm(request.POST or None)
     if form.is_valid():
+        if not request.user.is_authenticated:
+            return render(request, 'error.html', {})
         instance = form.save(commit=False)
         instance.user = request.user
         instance.video = video_object
@@ -38,3 +40,27 @@ def dislikes(request, pk):
     elif request.user in video_object.dislikes.all():
         video_object.dislikes.remove(request.user)
     return redirect('app:video', pk=pk)
+
+
+def comment_likes(request, pk):
+    comment = Comment.objects.get(pk=pk)
+    if not request.user.is_authenticated:
+        return render(request, 'error.html', {})
+    if request.user not in comment.likes.all():
+        comment.likes.add(request.user)
+        comment.dislikes.remove(request.user)
+    elif request.user in comment.likes.all():
+        comment.likes.remove(request.user)
+    return redirect('app:video', pk=comment.video.pk)
+
+
+def comment_dislikes(request, pk):
+    comment = Comment.objects.get(pk=pk)
+    if not request.user.is_authenticated:
+        return render(request, 'error.html', {})
+    if request.user not in comment.dislikes.all():
+        comment.dislikes.add(request.user)
+        comment.likes.remove(request.user)
+    elif request.user in comment.dislikes.all():
+        comment.dislikes.remove(request.user)
+    return redirect('app:video', pk=comment.video.pk)

@@ -21,6 +21,8 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
     date = models.DateField(auto_now_add=True)
+    likes = models.ManyToManyField(User, related_name='comment_likes')
+    dislikes = models.ManyToManyField(User, related_name='comment_dislikes')
 
     def __str__(self):
         return self.video.title
