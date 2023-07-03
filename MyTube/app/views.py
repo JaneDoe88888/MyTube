@@ -64,3 +64,20 @@ def comment_dislikes(request, pk):
     elif request.user in comment.dislikes.all():
         comment.dislikes.remove(request.user)
     return redirect('app:video', pk=comment.video.pk)
+
+
+def reply(request, pk):
+    parent_comment = Comment.objects.get(pk=pk)
+    form = CommentForm(request.POST or None)
+    show_replies = request.GET.get('replies')
+    if show_replies:
+        replies = Comment.objects.filter(parent=parent_comment)
+        return render(request, 'replies.html', {'replies': replies})
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.user = request.user
+        instance.video = parent_comment.video
+        instance.parent = parent_comment
+        instance.save()
+        return redirect('app:video', pk=parent_comment.video.pk)
+    return render(request, 'reply.html', {'form': form})
