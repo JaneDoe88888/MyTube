@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from . models import Video
+from . forms import CommentForm
 
 
 def home(request):
@@ -9,7 +10,14 @@ def home(request):
 
 def video(request, pk):
     video_object = Video.objects.get(pk=pk)
-    return render(request, 'video.html', {'video': video_object})
+    form = CommentForm(request.POST or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.user = request.user
+        instance.video = video_object
+        instance.save()
+        return redirect('app:video', pk=pk)
+    return render(request, 'video.html', {'video': video_object, 'form': form})
 
 
 def likes(request, pk):

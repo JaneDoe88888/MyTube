@@ -1,8 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-
 from .bulma_mixin import BulmaMixin
+
 
 class SignUpForm(BulmaMixin, UserCreationForm):
     username = forms.CharField(label='Придумайте никнейм')

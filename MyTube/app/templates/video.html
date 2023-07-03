@@ -72,7 +72,46 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="comments">
+                    <form method="post" class="comment_form">
+                        {% csrf_token %}
+                        {{ form }}
+                    </form>
+                    <div class="comments_list">
+                        {% for comment in video.comment_set.all %}
+                        <div class="comment">
+                            <div class="columns is-vcentered">
+                                <div class="column is-1">
+                                    @admin
+                                </div>
+                                <div class="column is-2">
+                                    8 месяцев назад
+                                </div>
+                            </div>
+                            <div class="content">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, vero.
+                            </div>
+                            <div class="field has-addons">
+                                <p class="control mx-2">
+                                    <ion-icon name="thumbs-up-outline"></ion-icon>
+                                    <span class="ml-2">100</span>
+                                </p>
+                                <p class="control mx-2">
+                                    <ion-icon name="thumbs-down-outline"></ion-icon>
+                                    <span class="ml-2">100</span>
+                                </p>
+                                <p class="control">
+                                    <span class="ml-2">Ответить</span>
+                                </p>
+                            </div>
+                            <div class="content has-text-info">
+                                <ion-icon name="caret-down-outline"></ion-icon>
+                                <span class="ml-2">20 ответов</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
             <div class="column">
                 <div class="box">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt minus odit

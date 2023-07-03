@@ -26,3 +26,16 @@
 .form * {
     background: hsl(206, 70%, 96%);
 }
+
+.comment_input {
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid grey;
+    padding: 5px;
+    font-size: 20px;
+    outline: none;
+}
+
+.comment_form label {
+    display: none;
+}

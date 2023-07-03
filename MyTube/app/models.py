@@ -14,3 +14,13 @@ class Video(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+    video = models.ForeignKey(Video, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField()
+    date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.video.title
