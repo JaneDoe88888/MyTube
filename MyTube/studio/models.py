@@ -11,6 +11,7 @@ class Video(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, default='1')
     likes = models.ManyToManyField(User, related_name='likes', null=True, blank=True)
     dislikes = models.ManyToManyField(User, related_name='dislikes', null=True, blank=True)
+    views = models.IntegerField(null=True)
 
     def __str__(self):
         return self.title

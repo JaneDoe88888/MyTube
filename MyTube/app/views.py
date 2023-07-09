@@ -18,6 +18,7 @@ def video(request, pk):
         instance = form.save(commit=False)
         instance.user = request.user
         instance.video = video_object
+        instance.views += 1
         instance.save()
         return redirect('app:video', pk=pk)
     return render(request, 'video.html', {'video': video_object, 'form': form})
