@@ -5,7 +5,7 @@
         <div class="container">
             <div class="columns is-centered">
                 <div class="column is-4">
-                    <form method="post" class="box">
+                    <form method="post" class="box" enctype="multipart/form-data">
                         {% csrf_token %}
                         {% for field in form %}
                             <div class="field">

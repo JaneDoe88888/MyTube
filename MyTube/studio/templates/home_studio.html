@@ -19,6 +19,17 @@
                 </thead>
                 <tbody>
                 {% for video in videos %}
+                    <div class="modal {% if confirm_delete %} is-active {% endif %}">
+                        <div class="modal-background"></div>
+                        <div class="modal-content">
+                            <div class="box has-text-centered">
+                                <div class="title is-3">Подтвердите удаление</div>
+                                <a href="{% url 'studio:home' %}?confirm=True&pk={{ video.pk }}"
+                                   class="button is-success">Подтвердить</a>
+                                <a href="{% url 'studio:home' %}" class="button is-warning">Отмена</a>
+                            </div>
+                        </div>
+                    </div>
                     <tr>
                         <td>
                             <a href="{% url 'app:video' video.pk %}">
@@ -32,7 +43,27 @@
                         <td>{{ video.comment_set.count }} комментариев</td>
                         <td>{{ video.likes.count }}</td>
                         <td>
-                            <button class="button is-warning">Изменить видео</button>
+                            <div class="dropdown is-hoverable">
+                                <div class="dropdown-trigger">
+                                    <button class="button">Выберите действие</button>
+                                </div>
+                                <div class="dropdown-menu">
+                                    <a href="{% url 'studio:video_edit' video.pk %}" class="dropdown-item">Изменить
+                                        видео</a>
+                                    <a href="{% url 'studio:home' %}?action=delete" class="dropdown-item">
+                                        <ion-icon name="trash-outline"></ion-icon>
+                                        Удалить
+                                    </a>
+                                    <a href="{%  url 'studio:home' %}?action=archive&pk={{ video.pk }}" class="dropdown-item">
+                                        {% if video.archived %}
+                                            Вытащить из архива
+                                        {% else %}
+                                            Перенести в архив
+                                        {% endif %}
+                                    </a>
+                                </div>
+                            </div>
+
                         </td>
                     </tr>
                 {% endfor %}

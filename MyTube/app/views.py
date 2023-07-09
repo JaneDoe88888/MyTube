@@ -12,13 +12,14 @@ def home(request):
 def video(request, pk):
     video_object = Video.objects.get(pk=pk)
     form = CommentForm(request.POST or None)
+    video_object.views += 1
+    video_object.save()
     if form.is_valid():
         if not request.user.is_authenticated:
             return render(request, 'error.html', {})
         instance = form.save(commit=False)
         instance.user = request.user
         instance.video = video_object
-        instance.views += 1
         instance.save()
         return redirect('app:video', pk=pk)
     return render(request, 'video.html', {'video': video_object, 'form': form})

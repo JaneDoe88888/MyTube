@@ -9,9 +9,10 @@ class Video(models.Model):
     file = models.FileField(upload_to='video/', validators=[FileExtensionValidator(allowed_extensions=['mp4'])])
     created_add = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default='1')
-    likes = models.ManyToManyField(User, related_name='likes', null=True, blank=True)
-    dislikes = models.ManyToManyField(User, related_name='dislikes', null=True, blank=True)
-    views = models.IntegerField(null=True)
+    likes = models.ManyToManyField(User, related_name='likes', blank=True)
+    dislikes = models.ManyToManyField(User, related_name='dislikes', blank=True)
+    views = models.IntegerField(default=0)
+    archived = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
