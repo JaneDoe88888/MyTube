@@ -5,7 +5,7 @@ from studio.models import Video
 
 
 def home(request):
-    videos = Video.objects.all()
+    videos = Video.objects.filter(archived=False)
     return render(request, 'home.html', {'videos': videos})
 
 

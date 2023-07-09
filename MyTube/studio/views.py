@@ -11,7 +11,7 @@ def home(request):
     if request.GET.get('confirm'):
         Video.objects.get(pk=request.GET.get('pk')).delete()
         return redirect('studio:home')
-    if action == 'archived':
+    if action == 'archive':
         video = Video.objects.get(pk=request.GET.get('pk'))
         if video.archived:
             video.archived = False
