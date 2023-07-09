@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from . models import Video, Comment
+from . models import Comment
 from . forms import CommentForm
+from studio.models import Video
 
 
 def home(request):
@@ -81,3 +82,5 @@ def reply(request, pk):
         instance.save()
         return redirect('app:video', pk=parent_comment.video.pk)
     return render(request, 'reply.html', {'form': form})
+
+

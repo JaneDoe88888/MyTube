@@ -2,22 +2,10 @@ from django.db import models
 from django.core.validators import FileExtensionValidator
 from django.contrib.auth.models import User
 
-class Video(models.Model):
-    title = models.CharField(max_length=255)
-    description = models.TextField()
-    image = models.ImageField(upload_to='image/')
-    file = models.FileField(upload_to='video/', validators=[FileExtensionValidator(allowed_extensions=['mp4'])])
-    created_add = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default='1')
-    likes = models.ManyToManyField(User, related_name='likes')
-    dislikes = models.ManyToManyField(User, related_name='dislikes')
-
-    def __str__(self):
-        return self.title
 
 
 class Comment(models.Model):
-    video = models.ForeignKey(Video, on_delete=models.CASCADE)
+    video = models.ForeignKey('studio.Video', on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
     date = models.DateField(auto_now_add=True)
@@ -25,10 +13,9 @@ class Comment(models.Model):
     dislikes = models.ManyToManyField(User, related_name='comment_dislikes')
     parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.video.title
 
     def count_replies(self):
-        return Comment.objects.filter(parent = self).count()
+        return Comment.objects.filter(parent=self).count()
+
 
 
