@@ -52,15 +52,19 @@
                     </a>
                 </div>
             {% else %}
-                <div class="navbar-item has-dropdown is-hoverable">
-                <div class="navbar-link">
-                    {{ user }}
-                </div>
-                <div class="navbar-dropdown">
-                    <a href="{% url 'users:sign_out' %}" class="navbar-item has-text-danger">
-                        Выйти
-                    </a>
-                </div>
+                <div class="navbar-item has-dropdown is-hoverable mr-6">
+                    <div class="navbar-link">
+                        {{ user }}
+                    </div>
+                    <div class="navbar-dropdown">
+                        <a href="{% url 'users:sign_out' %}" class="navbar-item has-text-danger">
+                            Выйти
+                        </a>
+                        <a class="navbar-item" href="{% url 'studio:home' %}">
+                            MyTube Studio
+                        </a>
+                    </div>
+
                 </div>
             {% endif %}
         </div>

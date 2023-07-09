@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from .forms import *
 
+
 def home(request):
-    return render(request, 'home_studio.html', {})
+    videos = Video.objects.all()
+    return render(request, 'home_studio.html', {'videos': videos})
 
 
 def video_create(request):

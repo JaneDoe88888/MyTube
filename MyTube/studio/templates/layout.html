@@ -14,7 +14,7 @@
 <body>
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-        <a class="navbar-item" href="{% url 'app:home' %}">
+        <a class="navbar-item" href="{% url 'studio:home' %}">
             <i class="navbar-icon">
                 <ion-icon name="logo-youtube"></ion-icon>
             </i>
@@ -52,13 +52,13 @@
                     <a href="" class="navbar-item">
                         Мой канал
                     </a>
-                    <a href="" class="navbar-item">
+                    <a href="{% url 'app:home' %}" class="navbar-item">
                         Главная
                     </a>
-                    <a href="" class="navbar-item">
+                    <a href="{% url 'users:sign_in' %}" class="navbar-item">
                         Сменить аккаунт
                     </a>
-                    <a href="" class="navbar-item">
+                    <a href="{% url 'users:sign_out' %}" class="navbar-item">
                         Выйти
                     </a>
                 </div>
@@ -74,5 +74,7 @@
         </div>
     </div>
 </nav>
+{% block content %}
+{% endblock %}
 </body>
 </html>

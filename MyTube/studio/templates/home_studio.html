@@ -1,4 +1,44 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+    <div class="section">
+        <div class="container">
+            <div class="title is-3">
+                Контент на канале
+            </div>
+            <table class="table is-striped is-fullwidth is-hoverable">
+                <thead>
+                <tr>
+                    <th>Видео</th>
+                    <th>Дата</th>
+                    <th>Просмотры</th>
+                    <th>Комментарии</th>
+                    <th>Нравится</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for video in videos %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'app:video' video.pk %}">
+                                <figure class="image is-128x128">
+                                    <img src="{{ video.image.url }}" alt="">
+                                </figure>
+                            </a>
+                        </td>
+                        <td>{{ video.created_add }}</td>
+                        <td>10 просмотров</td>
+                        <td>{{ video.comment_set.count }} комментариев</td>
+                        <td>{{ video.likes.count }}</td>
+                        <td>
+                            <button class="button is-warning">Изменить видео</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}
